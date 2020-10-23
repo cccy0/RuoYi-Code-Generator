@@ -152,6 +152,9 @@ public class GenTableServiceImpl implements IGenTableService
                     for (GenTableColumn column : genTableColumns)
                     {
                         GenUtils.initColumnField(column, table);
+                        if (StringUtils.isBlank(column.getColumnComment())) {
+                            column.setColumnComment("-");
+                        }
                         genTableColumnMapper.insertGenTableColumn(column);
                     }
                 }
